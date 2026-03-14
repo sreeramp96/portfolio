@@ -1,0 +1,48 @@
+# netlify.toml
+# Place this file in the ROOT of your Laravel project.
+# Netlify reads this automatically on every deploy.
+
+[build]
+  # The folder Netlify serves — your static export output
+  publish = "dist"
+
+  # No build command needed — you run `php artisan export`
+  # locally and commit /dist, OR use the GitHub Action below
+  # which builds and deploys automatically.
+  command = ""
+
+# ── Redirect Rules ───────────────────────────────────────────────────────────
+# Since it's a single page, all routes serve index.html.
+# This also handles the case where Netlify looks for /index.html.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Headers ──────────────────────────────────────────────────────────────────
+# Security headers — improves Lighthouse Best Practices score.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-XSS-Protection       = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets aggressively (Vite hashes filenames so safe to cache forever)
+[[headers]]
+  for = "/build/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/files/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Disposition = "attachment"
