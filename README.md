@@ -10,7 +10,7 @@ Welcome to the digital home of **Sreeram P**, a Backend Software Engineer who do
 
 ## ✨ What’s Inside?
 
-This isn't just a portfolio; it's a high-performance engine designed to showcase years of backend wizardry. Built with the latest **Laravel 12** and styled with **Tailwind CSS 4**, it’s as fast as the query performance gains it boasts.
+Built with the latest **Laravel 12** and styled with **Tailwind CSS 4**.
 
 - **⚡ Blazing Fast:** Optimized with Vite and static export.
 - **🎨 Modern Design:** A sleek, minimal interface that puts the work front and center.
@@ -47,39 +47,7 @@ The portfolio content is completely decoupled from the view logic, managed via c
 
 ---
 
-## 🚀 Launching the Engine (Local Setup)
-
-Want to see it in action on your machine? It's as simple as:
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/itssreeramp/portfolio.git
-
-# 2. Run the magic setup script
-composer run setup
-```
-
-The `setup` script will automatically:
-- Install PHP and Node dependencies.
-- Create your `.env` file and generate an app key.
-- Migrate the database (SQLite by default).
-- Build the frontend assets.
-
-To start the development environment:
-```bash
-npm run dev
-```
-
----
-
-## 📦 Building for Production
-
-This portfolio is designed to be exported as a static site for maximum performance and easy deployment (e.g., Netlify).
-
-```bash
-php artisan export
-```
-Your ready-to-deploy site will be waiting in the `dist/` directory! 🚀
+This portfolio is designed to be exported as a static site for maximum performance and easy deployment 🚀 (e.g., Netlify).
 
 ---
 
@@ -88,7 +56,7 @@ Your ready-to-deploy site will be waiting in the `dist/` directory! 🚀
 Looking for the full story? Check out my [Resume](public/files/Sreeram_Resume_V2.pdf) or reach out directly:
 
 - **📧 Email:** itssreeramp@gmail.com
-- **🌐 Website:** [sreeramp.com](https://sreeramp.com) (assuming this is your domain!)
+- **🌐 Website:** [sreeramp.com](https://sreeramp96.netlify.app) (assuming this is your domain!)
 
 ---
 
