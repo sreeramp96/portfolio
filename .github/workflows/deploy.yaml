@@ -58,7 +58,7 @@ jobs:
       # 8. Run the static export
       #    This generates the /dist folder with your HTML + assets
       - name: Export static site
-        run: php artisan export --skip-before-hooks
+        run: php artisan export
 
       # 9. Deploy /dist to Netlify
       - name: Deploy to Netlify
