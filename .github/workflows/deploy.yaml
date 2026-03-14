@@ -1,0 +1,75 @@
+name: Build & Deploy Portfolio
+
+# Triggers on every push to main branch
+on:
+  push:
+    branches: [main]
+  # Also allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Export Laravel → Deploy to Netlify
+
+    steps:
+      # 1. Check out your code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Set up PHP 8.3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          extensions: mbstring, dom, fileinfo, curl
+          coverage: none
+
+      # 3. Set up Node.js for Vite
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # 4. Install PHP dependencies
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      # 5. Install Node dependencies
+      - name: Install NPM dependencies
+        run: npm ci
+
+      # 6. Create .env for the export build
+      #    We use secrets stored in GitHub → Settings → Secrets
+      - name: Create .env
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          echo "APP_ENV=production"                          >> .env
+          echo "APP_DEBUG=false"                             >> .env
+          echo "APP_URL=https://sreeramp96.netlify.app"      >> .env
+          echo "ASSET_URL=https://sreeramp96.netlify.app"    >> .env
+
+      # 7. Build Vite assets (CSS + JS)
+      - name: Build frontend assets
+        run: npm run build
+
+      # 8. Run the static export
+      #    This generates the /dist folder with your HTML + assets
+      - name: Export static site
+        run: php artisan export --skip-before-hooks
+
+      # 9. Deploy /dist to Netlify
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3
+        with:
+          publish-dir: './dist'
+          production-branch: main
+          production-deploy: true
+          deploy-message: "Deploy from GitHub Actions — ${{ github.sha }}"
+          enable-pull-request-comment: false
+          enable-commit-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID:    ${{ secrets.NETLIFY_SITE_ID }}
