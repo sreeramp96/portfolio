@@ -49,6 +49,8 @@ jobs:
           LOG_CHANNEL=stderr
           LOG_LEVEL=debug
 
+          SESSION_DRIVER=cookie
+
           # No database — portfolio is config-file driven
           DB_CONNECTION=sqlite
           DB_DATABASE=/dev/null
