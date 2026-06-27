@@ -7,7 +7,7 @@ return [
         'period' => '2026',
         'tags' => ['Laravel 12', 'Tailwind v4', 'Alpine.js', 'PHP 8.4'],
         'description' => 'Portfolio built with Laravel 12, Tailwind CSS v4, and Alpine.js. Features dark/light mode, scroll-triggered animations, config-driven content architecture, and a downloadable ATS-optimised resume.',
-        'link' => 'https://github.com/itssreeramp',
+        'link' => 'https://github.com/sreeramp96/portfolio',
     ],
     [
         'title' => 'Server Sentinel',
