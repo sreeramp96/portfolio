@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- SEO: FIX - meta description was missing (Lighthouse SEO) --}}
     <title>Sreeram P | Backend Software Engineer — PHP & MySQL</title>
     <meta name="description"
         content="Sreeram P is a Backend Software Engineer with 5+ years experience in PHP, MySQL optimisation, and Laravel. Based in Kochi, Kerala. Open to new opportunities.">
     <meta name="robots" content="index, follow">
 
-    {{-- Open Graph --}}
     <meta property="og:title" content="Sreeram P | Backend Software Engineer">
     <meta property="og:description"
         content="5+ years building data-heavy PHP systems. SQL optimisation specialist. Based in Kochi.">
     <meta property="og:type" content="website">
 
-    {{-- Favicons --}}
     <link rel="icon" href="{{ asset('images/favicons/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicons/favicon-32x32.png') }}">
@@ -25,25 +22,15 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- FIX: preload fonts to reduce LCP. Use display=swap for font-display --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&display=swap">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&display=swap"
-            rel="stylesheet">
-    </noscript>
 
-    {{-- FIX: preload GSAP so it doesn't block scroll animations --}}
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+
     <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
     <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
 
-    {{-- Theme: IIFE runs sync before paint — prevents dark mode flash --}}
     <script>
         (function () {
             var s = localStorage.getItem('theme');
@@ -54,12 +41,10 @@
     </script>
 
     <style>
-        /* Display font */
         .font-display {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
         }
 
-        /* Grain overlay */
         body::before {
             content: '';
             position: fixed;
@@ -70,7 +55,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* Nav underline */
         .nav-link {
             position: relative;
         }
@@ -90,7 +74,6 @@
             width: 100%;
         }
 
-        /* Pulse orb */
         @keyframes pulse-slow {
 
             0%,
@@ -109,7 +92,6 @@
             animation: pulse-slow 7s ease-in-out infinite;
         }
 
-        /* Badge ping */
         @keyframes ping-slow {
 
             0%,
@@ -128,7 +110,6 @@
             animation: ping-slow 2.2s ease-in-out infinite;
         }
 
-        /* Ticker scroll (inspiration: horizontal scrolling text) */
         @keyframes ticker {
             0% {
                 transform: translateX(0);
@@ -147,7 +128,6 @@
             animation-play-state: paused;
         }
 
-        /* Mobile menu slide */
         #mobile-menu {
             max-height: 0;
             opacity: 0;
@@ -160,7 +140,6 @@
             opacity: 1;
         }
 
-        /* Cursor dot (inspiration: custom cursor) */
         #cursor-dot {
             position: fixed;
             width: 8px;
@@ -195,13 +174,8 @@
             color: #a1a1aa;
         }
 
-        /* zinc-400 — passes 4.5:1 on #09090b */
-
-        /* FIX: emerald CTA button — white text on #10b981 fails 4.5:1.
-           Use darker emerald-700 bg or darken text. We use emerald-600 which passes. */
         .btn-primary {
             background-color: #059669;
-            /* emerald-600 */
             color: #ffffff;
         }
 
@@ -209,9 +183,6 @@
             background-color: #047857;
         }
 
-        /* emerald-700 */
-
-        /* Active nav highlight */
         .nav-link.active {
             color: #10b981;
         }
@@ -227,11 +198,9 @@
 <body class="bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-50
              font-sans transition-colors duration-500 ease-in-out overflow-x-hidden">
 
-    {{-- Custom cursor (hidden on touch devices via JS) --}}
     <div id="cursor-dot" style="opacity:0"></div>
     <div id="cursor-ring" style="opacity:0"></div>
 
-    {{-- ══════ NAV ══════ --}}
     <nav role="navigation" aria-label="Main navigation" class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#09090b]/80
                 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -242,7 +211,6 @@
             </a>
 
             <div class="flex items-center gap-4 sm:gap-8">
-                {{-- Desktop links --}}
                 <div class="hidden sm:flex gap-8 text-sm font-medium text-zinc-500 dark:text-zinc-400">
                     <a href="#hero"
                         class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</a>
@@ -256,7 +224,6 @@
                         class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Projects</a>
                 </div>
 
-                {{-- Theme toggle --}}
                 <button id="theme-toggle" aria-label="Toggle dark and light mode" class="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800
                            hover:ring-2 ring-emerald-500 transition-all duration-200">
                     <svg id="icon-sun" class="w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"
@@ -270,7 +237,6 @@
                     </svg>
                 </button>
 
-                {{-- Hamburger --}}
                 <button id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false"
                     aria-controls="mobile-menu" class="sm:hidden p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800
                            hover:ring-2 ring-emerald-500 transition-all">
@@ -282,7 +248,6 @@
             </div>
         </div>
 
-        {{-- Mobile menu --}}
         <div id="mobile-menu" role="menu" class="sm:hidden border-t border-zinc-200 dark:border-zinc-800
                     bg-white/95 dark:bg-[#09090b]/95 backdrop-blur-md">
             <nav class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4
@@ -301,12 +266,10 @@
         </div>
     </nav>
 
-    {{-- ══════ MAIN ══════ --}}
     <main id="main-content" class="pt-24 sm:pt-32">
         @yield('content')
     </main>
 
-    {{-- ══════ TICKER STRIP (inspiration: scrolling text band) ══════ --}}
     <div class="border-t border-b border-zinc-200 dark:border-zinc-800 overflow-hidden py-3 my-0 bg-white dark:bg-zinc-950"
         aria-hidden="true">
         <div
@@ -349,7 +312,6 @@
                 syncIcons();
             });
 
-            // ── Mobile menu ───────────────────────────────
             var mBtn = document.getElementById('mobile-menu-btn');
             var mMenu = document.getElementById('mobile-menu');
             mBtn.addEventListener('click', function () {
@@ -394,7 +356,6 @@
                 });
             }
 
-            // ── Active nav highlight on scroll ───────────
             var sections = document.querySelectorAll('section[id]');
             var navLinks = document.querySelectorAll('.nav-link');
             var obs = new IntersectionObserver(function (entries) {

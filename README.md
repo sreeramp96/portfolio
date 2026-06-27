@@ -1,6 +1,4 @@
-# 🚀 Sreeram's Portfolio – Backend Engineer Extraordinaire! 💻
-
-Welcome to the digital home of **Sreeram P**, a Backend Software Engineer who doesn't just write code — he architects data-heavy systems that scale! 🏗️
+# 🚀 Sreeram's Portfolio 💻
 
 <p align="center">
   <img src="public/images/favicons/android-chrome-192x192.png" alt="Sreeram P Logo" width="120" />
@@ -21,7 +19,7 @@ Built with the latest **Laravel 12** and styled with **Tailwind CSS 4**.
 
 ## 🛠️ The Tech Stack
 
-I believe in using the best tools for the job. Here's what's powering this portfolio:
+Here's what's powering this portfolio:
 
 | Technology | Role |
 | :--- | :--- |

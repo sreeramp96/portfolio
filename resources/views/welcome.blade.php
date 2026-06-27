@@ -10,16 +10,13 @@
 @endphp
 
 @section('content')
-
-    {{-- ══════ HERO ══════ --}}
     <section id="hero" aria-label="Introduction" class="relative max-w-6xl mx-auto px-6 pb-16 sm:pb-28 overflow-hidden">
 
-        <div class="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px]
-                    rounded-full bg-emerald-500/10 blur-[90px] animate-pulse-slow" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -top-40 -right-40 w-150 h-150 rounded-full bg-emerald-500/10 blur-[90px] animate-pulse-slow"
+            aria-hidden="true"></div>
 
         <div class="relative max-w-4xl">
 
-            {{-- Available badge --}}
             @if($social['available'])
                 <div class="gs-hero-badge inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full
                             border border-emerald-500/30 bg-emerald-500/8 text-emerald-500
@@ -34,11 +31,16 @@
                 {{ $hero['role'] }}
             </p>
 
-            <h1 class="gs-hero-h1 font-display text-4xl sm:text-6xl md:text-7xl font-extrabold
-                       tracking-tight mb-8 leading-[1.08] text-zinc-900 dark:text-zinc-50">
-                {!! $hero['tagline'] !!}
-            </h1>
-
+            <div class="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+                <h1 class="gs-hero-h1 font-display text-4xl sm:text-6xl md:text-7xl font-extrabold
+                                                               tracking-tight leading-[1.08] text-zinc-900 dark:text-zinc-50">
+                    {!! $hero['tagline'] !!}
+                </h1>
+                <div class="hidden md:block shrink-0">
+                    <img src="{{ asset('images/favicons/Sreeram.png') }}" alt="Sreeram P"
+                        class="w-20 h-20 sm:w-24 sm:h-24 md:w-60 md:h-60 rounded-2xl shadow-2xl shadow-emerald-500/20 transition-all duration-500 hover:scale-105">
+                </div>
+                </div>
             <p class="gs-hero-bio text-base sm:text-xl text-zinc-600 dark:text-zinc-400
                       mb-10 leading-relaxed max-w-2xl">
                 {{ $hero['bio'] }}
@@ -72,8 +74,6 @@
                 </a>
             </div>
 
-            {{-- Stats row --}}
-            {{-- FIX: text-muted (zinc-400) replaces text-zinc-500 — fixes contrast failure --}}
             <div class="gs-hero-stats flex flex-wrap gap-8 mt-14 pt-10
                         border-t border-zinc-200 dark:border-zinc-800">
                 @foreach($hero['stats'] as $stat)
@@ -88,8 +88,6 @@
         </div>
     </section>
 
-
-    {{-- ══════ ABOUT ══════ --}}
     <section id="about" aria-labelledby="about-heading" class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24
                     border-t border-zinc-200 dark:border-zinc-900">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -119,7 +117,6 @@
                 </div>
             </div>
 
-            {{-- Highlight cards --}}
             <div class="grid grid-cols-2 gap-4">
                 @foreach($about['highlights'] as $card)
                     <div class="gs-card bg-white dark:bg-zinc-900
@@ -139,10 +136,8 @@
         </div>
     </section>
 
-
-    {{-- ══════ SKILLS ══════ --}}
-    <section id="skills" aria-labelledby="skills-heading" class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24
-                    border-t border-zinc-200 dark:border-zinc-900">
+    <section id="skills" aria-labelledby="skills-heading"
+        class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24 border-t border-zinc-200 dark:border-zinc-900">
 
         <p class="font-display text-xs tracking-[0.2em] uppercase text-emerald-500 font-bold mb-3" aria-hidden="true">Skills
         </p>
@@ -150,7 +145,6 @@
             Technical toolkit.
         </h2>
 
-        {{-- Skill bars --}}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-5 mb-14" role="list"
             aria-label="Skill proficiency levels">
             @foreach($skills['bars'] as $skill)
@@ -166,15 +160,13 @@
                         aria-valuenow="{{ $skill['level'] }}" aria-valuemin="0" aria-valuemax="100"
                         aria-label="{{ $skill['name'] }} proficiency">
                         <div class="skill-bar h-full rounded-full w-0
-                                    bg-gradient-to-r from-emerald-600 to-emerald-400" data-width="{{ $skill['level'] }}"></div>
+                                    bg-linear-to-r from-emerald-600 to-emerald-400" data-width="{{ $skill['level'] }}"></div>
                     </div>
                 </div>
             @endforeach
         </div>
 
-        {{-- Tool badges --}}
         <div class="mb-10">
-            {{-- FIX: text-zinc-400 (text-muted) instead of text-zinc-500 --}}
             <p class="text-xs uppercase tracking-widest text-muted font-bold mb-4">Also worked with</p>
             <div class="flex flex-wrap gap-2" role="list" aria-label="Other tools and technologies">
                 @foreach($skills['tools'] as $tool)
@@ -190,10 +182,7 @@
             </div>
         </div>
 
-        {{-- Currently learning --}}
-        <div class="bg-zinc-100 dark:bg-zinc-900/60
-                    border border-zinc-200 dark:border-zinc-800 rounded-2xl px-6 py-5">
-            {{-- FIX: text-muted replaces text-zinc-500 --}}
+        <div class="bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-2xl px-6 py-5">
             <p class="text-xs uppercase tracking-widest text-muted font-bold mb-4">Currently levelling up</p>
             <div class="flex flex-wrap gap-3">
                 @foreach($skills['learning'] as $item)
@@ -209,11 +198,8 @@
         </div>
     </section>
 
-
-    {{-- ══════ EXPERIENCE ══════ --}}
-    <section id="experience" aria-labelledby="experience-heading" class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24
-                    border-t border-zinc-200 dark:border-zinc-900">
-
+    <section id="experience" aria-labelledby="experience-heading"
+        class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24 border-t border-zinc-200 dark:border-zinc-900">
         <p class="font-display text-xs tracking-[0.2em] uppercase text-emerald-500 font-bold mb-3" aria-hidden="true">
             Experience</p>
         <h2 id="experience-heading" class="font-display text-3xl sm:text-4xl font-extrabold mb-12">
@@ -269,10 +255,8 @@
         </div>
     </section>
 
-
-    {{-- ══════ PROJECTS ══════ --}}
-    <section id="projects" aria-labelledby="projects-heading" class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24
-                    border-t border-zinc-200 dark:border-zinc-900">
+    <section id="projects" aria-labelledby="projects-heading"
+        class="gs-section max-w-6xl mx-auto px-6 py-16 sm:py-24 border-t border-zinc-200 dark:border-zinc-900">
 
         <p class="font-display text-xs tracking-[0.2em] uppercase text-emerald-500 font-bold mb-3" aria-hidden="true">
             Projects</p>
@@ -288,7 +272,7 @@
                                 hover:shadow-xl hover:shadow-emerald-500/8 hover:border-emerald-500/30">
 
                     <div class="absolute top-0 left-8 right-8 h-px
-                                bg-gradient-to-r from-transparent via-emerald-500 to-transparent
+                                bg-linear-to-r from-transparent via-emerald-500 to-transparent
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
 
                     @if(isset($project['private']) && $project['private'])
@@ -342,13 +326,11 @@
         </div>
     </section>
 
-
-    {{-- ══════ CTA ══════ --}}
     <section aria-label="Contact call to action" class="gs-section max-w-6xl mx-auto px-6 py-20 sm:py-28">
         <div class="relative bg-zinc-900 dark:bg-zinc-950 border border-zinc-800
                     rounded-3xl px-8 sm:px-16 py-14 sm:py-20 text-center overflow-hidden">
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-                <div class="w-[500px] h-[500px] rounded-full bg-emerald-500/10
+                <div class="w-125 h-125 rounded-full bg-emerald-500/10
                             blur-[80px] animate-pulse-slow"></div>
             </div>
             <p class="relative font-display text-xs tracking-[0.2em] uppercase
@@ -363,7 +345,6 @@
                 and actually shipping? Let's talk.
             </p>
             <div class="relative flex flex-col sm:flex-row gap-4 justify-center">
-                {{-- FIX: btn-primary uses emerald-600 (#059669) which passes 4.5:1 contrast --}}
                 <a href="mailto:{{ $social['email'] }}" class="btn-primary inline-flex items-center justify-center gap-2
                           px-8 py-4 font-bold rounded-xl transition-all duration-300
                           hover:scale-[1.03] hover:shadow-xl hover:shadow-emerald-700/25">
@@ -390,7 +371,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-            // ── Hero entrance ────────────────────────────────
             gsap.timeline({ defaults: { ease: 'power3.out' } })
                 .from('.gs-hero-badge', { opacity: 0, y: 16, duration: 0.5 })
                 .from('.gs-hero-role', { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
@@ -399,7 +379,6 @@
                 .from('.gs-hero-cta', { opacity: 0, y: 20, duration: 0.5 }, '-=0.35')
                 .from('.gs-hero-stats > div', { opacity: 0, y: 16, duration: 0.45, stagger: 0.08 }, '-=0.3');
 
-            // ── Sections: Y only (no opacity — prevents child conflicts) ──
             gsap.utils.toArray('.gs-section').forEach(function (section) {
                 gsap.from(section, {
                     scrollTrigger: { trigger: section, start: 'top 90%', toggleActions: 'play none none none' },
@@ -407,7 +386,6 @@
                 });
             });
 
-            // ── Cards: opacity+Y stagger, triggered on first card ──
             gsap.utils.toArray('.gs-section').forEach(function (section) {
                 var cards = section.querySelectorAll('.gs-card');
                 if (!cards.length) return;
@@ -422,7 +400,6 @@
                 });
             });
 
-            // ── Section headings ────────────────────────────
             gsap.utils.toArray('.gs-section').forEach(function (section) {
                 var h2 = section.querySelector('h2');
                 var label = section.querySelector('p[aria-hidden]');
@@ -439,7 +416,6 @@
                 });
             });
 
-            // ── Skill bars count-up ─────────────────────────
             ScrollTrigger.create({
                 trigger: '#skills',
                 start: 'top 78%',
@@ -458,7 +434,6 @@
                 }
             });
 
-            // ── Smooth anchor scroll ─────────────────────────
             document.querySelectorAll('a[href^="#"]').forEach(function (a) {
                 a.addEventListener('click', function (e) {
                     var id = a.getAttribute('href');

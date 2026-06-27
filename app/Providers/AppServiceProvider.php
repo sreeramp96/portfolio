@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         foreach (glob(config_path('portfolio/*.php')) as $file) {
-            $key = 'portfolio.' . basename($file, '.php');
+            $key = 'portfolio.'.basename($file, '.php');
             config([$key => require $file]);
         }
     }

@@ -24,9 +24,9 @@ return [
      * By default your `public` folder's contents will be added to the export.
      */
     'include_files' => [
-        'public/build'   => 'build',
-        'public/images'  => 'images',
-        'public/files'   => 'files',
+        'public/build' => 'build',
+        'public/images' => 'images',
+        'public/files' => 'files',
     ],
 
     /*
