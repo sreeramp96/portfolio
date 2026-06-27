@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4: custom theme tokens go here with @theme ── */
+@theme {
+  /* Fonts */
+  --font-sans:    "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+  --font-mono: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+
+  /* Custom animations */
+  --animate-pulse-slow: pulse-slow 7s ease-in-out infinite;
+  --animate-ping-slow:  ping-slow 2.2s ease-in-out infinite;
+  --animate-ticker:     ticker 22s linear infinite;
+
+  /* Keyframes */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50%       { opacity: 0.9; transform: scale(1.07); }
+  }
+  @keyframes ping-slow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.8); opacity: 0; }
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Base styles ─────────────────────────────────────── */
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Dark mode body bg — Tailwind v4 needs explicit class-based dark here */
+  html.dark body {
+    background-color: #09090b;
+    color: #fafafa;
+  }
+  html:not(.dark) body {
+    background-color: #fafafa;
+    color: #09090b;
+  }
+}
+
+/* ── Grain texture overlay ───────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── Nav underline hover ─────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: #10b981;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+.nav-link.active         { color: #10b981; }
+
+/* ── Smooth theme toggle ─────────────────────────────── */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition:
+    background-color 0.25s ease,
+    border-color     0.25s ease,
+    color            0.25s ease,
+    fill             0.25s ease !important;
+  transition-delay: 0s !important;
+}
+
+/* ── Display font helper ─────────────────────────────── */
+.font-display { font-family: "Bricolage Grotesque", ui-sans-serif, sans-serif; }

@@ -1,63 +1,75 @@
-# 🚀 Sreeram's Portfolio 💻
+# React + TypeScript + Vite
 
-<p align="center">
-  <img src="public/images/favicons/android-chrome-192x192.png" alt="Sreeram P Logo" width="120" />
-</p>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## ✨ What’s Inside?
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Built with the latest **Laravel 12** and styled with **Tailwind CSS 4**.
+## React Compiler
 
-- **⚡ Blazing Fast:** Optimized with Vite and static export.
-- **🎨 Modern Design:** A sleek, minimal interface that puts the work front and center.
-- **🧠 Data-Driven:** Showcasing enterprise-scale migrations and 12x query performance gains.
-- **📱 Responsive:** Looks great on everything from a 4K monitor to your pocket-sized terminal.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the ESLint configuration
 
-## 🛠️ The Tech Stack
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Here's what's powering this portfolio:
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-| Technology | Role |
-| :--- | :--- |
-| ![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white) | The core logic engine. |
-| ![Laravel](https://img.shields.io/badge/Laravel-12.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white) | The elegant framework for web artisans. |
-| ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) | Utility-first CSS for a modern, bespoke look. |
-| ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.15-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white) | Minimal, reactive magic for the frontend. |
-| ![Vite](https://img.shields.io/badge/Vite-7.0-646CFF?style=for-the-badge&logo=vite&logoColor=white) | Next-gen frontend tooling. |
-| ![Pest](https://img.shields.io/badge/Pest-4.4-FF4081?style=for-the-badge&logo=pest&logoColor=white) | Delightful testing for PHP. |
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
----
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-## 🏗️ Project Architecture
+```
 
-The portfolio content is completely decoupled from the view logic, managed via clean configuration files:
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- 📂 `config/portfolio/hero.php` — Branding and taglines.
-- 📂 `config/portfolio/about.php` — The "who", "what", and "why".
-- 📂 `config/portfolio/experience.php` — A timeline of professional growth.
-- 📂 `config/portfolio/projects.php` — The portfolio of work.
-- 📂 `config/portfolio/skills.php` — A breakdown of the technical arsenal.
-- 📂 `config/portfolio/social.php` — Where to find me in the wild.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
----
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-This portfolio is designed to be exported as a static site for maximum performance and easy deployment 🚀 (e.g., Netlify).
-
----
-
-## 📄 Resume & Contact
-
-Looking for the full story? Check out my [Resume](public/files/Sreeram_Resume_V2.pdf) or reach out directly:
-
-- **📧 Email:** itssreeramp@gmail.com
-- **🌐 Website:** [sreeramp.com](https://sreeramp96.netlify.app) (assuming this is your domain!)
-
----
-
-<p align="center">
-  Made with ❤️ and a whole lot of ☕ by Sreeram P.
-</p>
+```
