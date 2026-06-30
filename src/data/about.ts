@@ -1,33 +1,33 @@
 import type { AboutData } from "@/types";
 
 export const about: AboutData = {
-  headingLine1: "I write backends that last",
-  headingLine2: "longer than hype cycles.",
+  headingLine1: "Hi, I'm",
+  headingLine2: "Sreeram.",
   bio: [
-    "I'm Sreeram — a backend engineer based in Kochi, Kerala with 5+ years inside enterprise-grade PHP and MySQL systems. Real-time sensor data, financial workflows, bulk reporting engines crunching millions of rows.",
-    "My speciality is SQL optimisation. I've taken dashboards loading in 6–8 seconds and cut them to under 500ms — without touching the application layer. Just better indexes, smarter joins, and reading the query planner.",
-    "Right now I'm deepening my Laravel expertise, picking up Docker and Redis, and building toward senior backend roles at product companies where performance actually matters.",
+    "I'm a software engineer based in Kochi, Kerala with over 5 years of experience in backend development. I specialize in building efficient, scalable, and maintainable web applications.",
+    "My primary focus is on backend technologies like PHP, MySQL, and Laravel. I enjoy working on database optimization, API development, and creating robust software architectures.",
+    "I am always eager to learn new technologies and improve my skills. Currently, I am exploring modern tools like Docker and Redis to further enhance my development workflow.",
   ],
   highlights: [
     {
+      icon: "💻",
+      title: "Backend Development",
+      desc: "Building scalable and maintainable server-side applications using PHP and Laravel.",
+    },
+    {
       icon: "🗄️",
-      title: "SQL Optimisation",
-      desc: "Reduced dashboard query times from ~6s to under 500ms on 10M+ row production tables.",
+      title: "Database Management",
+      desc: "Designing and optimizing MySQL databases for better performance and reliability.",
     },
     {
-      icon: "🏗️",
-      title: "Legacy Migration",
-      desc: "Led PHP 5.6 → 8.3 migration of an 80,000+ line enterprise SaaS with zero downtime.",
-    },
-    {
-      icon: "📊",
-      title: "Reporting Pipelines",
-      desc: "Bulk PDF + Highcharts engine processing 50k+ sensor points, saving ~8 hrs/week.",
+      icon: "🔗",
+      title: "API Integration",
+      desc: "Developing and integrating RESTful APIs to connect different systems seamlessly.",
     },
     {
       icon: "⚙️",
-      title: "Clean Architecture",
-      desc: "OOP, MVC, and RESTful API design applied to real production codebases.",
+      title: "Clean Code",
+      desc: "Writing clean, readable, and well-structured code following industry best practices.",
     },
   ],
   links: [

@@ -1,18 +1,14 @@
-// Skills.tsx — animated skill bars with count-up, tool badges, learning strip.
-// useEffect + IntersectionObserver replaces GSAP ScrollTrigger for the bar animation.
-
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { skills } from "@/data";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-// SkillBar — individual animated bar component.
-// Extracted into its own component so the logic is self-contained.
+
 function SkillBar({ name, level }: { name: string; level: number }) {
   const [width, setWidth] = useState(0);
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const animated = useRef(false); // prevent re-animating on scroll back
+  const animated = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -23,15 +19,12 @@ function SkillBar({ name, level }: { name: string; level: number }) {
         if (entry.isIntersecting && !animated.current) {
           animated.current = true;
 
-          // Animate bar width
           setWidth(level);
 
-          // Count-up: increment from 0 to level over ~1100ms
           const duration = 1100;
           const start = performance.now();
           const step = (now: number) => {
             const progress = Math.min((now - start) / duration, 1);
-            // easeOutQuad for deceleration at end
             const eased = 1 - (1 - progress) * (1 - progress);
             setCount(Math.round(eased * level));
             if (progress < 1) requestAnimationFrame(step);
@@ -67,10 +60,9 @@ function SkillBar({ name, level }: { name: string; level: number }) {
         aria-valuemax={100}
         aria-label={`${name} proficiency`}
       >
-        {/* CSS transition handles the width animation */}
         <div
-          className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400
-                     transition-all duration-[1100ms] ease-out"
+          className="h-full rounded-full bg-linear-to-r from-emerald-600 to-emerald-400
+                     transition-all duration-1100ms ease-out"
           style={{ width: `${width}%` }}
         />
       </div>
@@ -88,8 +80,6 @@ export function Skills() {
     >
       <SectionLabel>Skills</SectionLabel>
       <SectionHeading id="skills-heading">Technical toolkit.</SectionHeading>
-
-      {/* Skill bars grid */}
       <div
         className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-5 mb-14"
         role="list"
@@ -102,7 +92,6 @@ export function Skills() {
         ))}
       </div>
 
-      {/* Tool badges */}
       <div className="mb-10">
         <p className="text-xs uppercase tracking-widest text-zinc-400 font-bold mb-4">
           Also worked with
@@ -127,8 +116,7 @@ export function Skills() {
           ))}
         </div>
       </div>
-
-      {/* Currently learning */}
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -1,6 +1,3 @@
-// About.tsx — two-column about section with highlight cards.
-// whileInView fires animations when elements scroll into the viewport.
-
 import { motion } from 'framer-motion'
 import { about } from '@/data'
 import { SectionLabel } from '@/components/ui/SectionLabel'
@@ -15,8 +12,6 @@ export function About() {
                  border-t border-zinc-200 dark:border-zinc-900"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-
-        {/* Left: text */}
         <div>
           <SectionLabel>About</SectionLabel>
           <SectionHeading id="about-heading">
@@ -55,8 +50,7 @@ export function About() {
             ))}
           </div>
         </div>
-
-        {/* Right: highlight cards */}
+        
         <div className="grid grid-cols-2 gap-4">
           {about.highlights.map((card: { title: string; icon: string; desc: string }, i: number) => (
             <motion.div

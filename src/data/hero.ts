@@ -1,17 +1,17 @@
-import type { HeroData } from '../types'
+import type { HeroData } from "../types";
 
-// Equivalent to config/portfolio/hero.php
 export const hero: HeroData = {
-  role:         'Backend Software Engineer',
-  taglineStart: 'Architecting',
-  taglineGrey:  'data-heavy',
-  taglineEnd:   'systems.',
-  bio:          "Backend engineer with 5+ years optimising PHP and MySQL at enterprise scale. I turn sluggish legacy codebases into fast, maintainable architectures — and I have the EXPLAIN plans to prove it.",
-  resumeUrl:    '/files/Sreeram_Resume_V3.pdf',
+  role: "Software Engineer",
+  taglineStart: "Building",
+  taglineGrey: "scalable",
+  taglineEnd: "applications.",
+  bio: "I'm a backend software engineer with a passion for building robust and efficient applications. I focus on writing clean, maintainable code and solving complex problems.",
+  resumeUrl: "/files/Sreeram_Resume_V3.pdf",
+  profile: "/favicons/Sreeram.png",
   stats: [
-    { value: '5+',       label: 'Years experience' },
-    { value: '12x',      label: 'Query perf. gain' },
-    { value: '80k+ LOC', label: 'PHP migration led' },
-    { value: 'Laravel',  label: 'Modern stack' },
+    { value: "5+", label: "Years of Experience" },
+    { value: "PHP", label: "Core Expertise" },
+    { value: "MySQL", label: "Database" },
+    { value: "Laravel", label: "Framework" },
   ],
-}
+};

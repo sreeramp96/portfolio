@@ -1,5 +1,3 @@
-// Experience.tsx — work history cards with animated entrance.
-
 import { motion } from "framer-motion";
 import { experience } from "@/data";
 import { Tag } from "@/components/ui/Tag";
@@ -25,7 +23,6 @@ export function Experience() {
             key={job.company}
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            // once: true = animates only the first time it enters view
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.55, delay: i * 0.1 }}
             className="group bg-white dark:bg-[#111113]
@@ -33,7 +30,6 @@ export function Experience() {
                        hover:border-emerald-500/30 transition-all duration-300
                        hover:shadow-xl hover:shadow-emerald-500/5"
           >
-            {/* Title + period */}
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
               <h3
                 className="font-display text-xl font-bold
@@ -54,7 +50,6 @@ export function Experience() {
               {job.company} · {job.location}
             </p>
 
-            {/* Tags */}
             <div
               className="flex flex-wrap gap-2 mb-5"
               role="list"
@@ -71,7 +66,6 @@ export function Experience() {
               {job.description}
             </p>
 
-            {/* Bullet points */}
             <ul className="space-y-2.5">
               {job.bullets.map((bullet: string, bi: number) => (
                 <li

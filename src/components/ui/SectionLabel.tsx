@@ -1,6 +1,3 @@
-// SectionLabel.tsx — the small uppercase "About", "Skills" etc label
-// that appears above every section heading.
-
 import { motion } from "framer-motion";
 
 interface SectionLabelProps {

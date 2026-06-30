@@ -1,6 +1,3 @@
-// SectionHeading.tsx — the large h2 heading for each section.
-// whileInView fires the animation when the element scrolls into view.
-
 import { motion } from "framer-motion";
 
 interface SectionHeadingProps {

@@ -1,5 +1,3 @@
-// CTA.tsx — contact call-to-action banner at the bottom.
-
 import { motion } from "framer-motion";
 import { social } from "@/data";
 
@@ -17,12 +15,11 @@ export function CTA() {
         className="relative bg-zinc-900 dark:bg-zinc-950 border border-zinc-800
                    rounded-3xl px-8 sm:px-16 py-14 sm:py-20 text-center overflow-hidden"
       >
-        {/* Ambient orb */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
           aria-hidden="true"
         >
-          <div className="w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-[80px] animate-pulse-slow" />
+          <div className="w-125 h-125 rounded-full bg-emerald-500/10 blur-[80px] animate-pulse-slow" />
         </div>
 
         <p

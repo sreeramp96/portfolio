@@ -1,13 +1,9 @@
-// Projects.tsx — project cards grid.
-// staggerChildren staggers the card animations so they cascade in one by one.
-
 import { motion } from "framer-motion";
 import { projects } from "@/data";
 import { Tag } from "@/components/ui/Tag";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-// Container variant: tells Framer Motion to stagger children
 const containerVariants = {
   hidden: {},
   visible: {
@@ -15,7 +11,6 @@ const containerVariants = {
   },
 };
 
-// Each card fades up
 const cardVariants = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
@@ -31,8 +26,6 @@ export function Projects() {
     >
       <SectionLabel>Projects</SectionLabel>
       <SectionHeading id="projects-heading">Things I've built.</SectionHeading>
-
-      {/* motion.div with variants triggers stagger on children */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         variants={containerVariants}
@@ -49,7 +42,6 @@ export function Projects() {
                        hover:-translate-y-2 transform-gpu transition-all duration-300 ease-out
                        hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-500/30"
           >
-            {/* Top accent line — appears on hover via CSS opacity */}
             <div
               className="absolute top-0 left-8 right-8 h-px
                             bg-linear-to-r from-transparent via-emerald-500 to-transparent
@@ -66,7 +58,6 @@ export function Projects() {
               </span>
             )}
 
-            {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-5" role="list">
               {project.tags.map((tag: string) => (
                 <span key={tag} role="listitem">
