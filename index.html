@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sreeram P | Backend Software Engineer — PHP & MySQL</title>
+    <meta name="description" content="Sreeram P is a Backend Software Engineer with 5+ years experience in PHP, MySQL optimisation, and Laravel. Based in Kochi, Kerala. Open to new opportunities." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Sreeram P | Backend Software Engineer" />
+    <meta property="og:description" content="5+ years building data-heavy PHP systems. SQL optimisation specialist. Based in Kochi." />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+    <!-- Fonts: non-blocking load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" /> -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap">
+   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+
+    <!-- Theme: run before React mounts to prevent dark mode flash -->
+    <script>
+      (function () {
+        var s = localStorage.getItem('theme');
+        var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (s === 'dark' || (!s && d)) document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+      })();
+    </script>
+  </head>
+  <body class="bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-50 font-sans overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
